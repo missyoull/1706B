@@ -1,0 +1,60 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.banner{
+  position: relative;
+}
+.banner text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 90rpx;
+  color: green;
+  font-weight: 600;
+  border: 3px solid blue;
+  transform: translate(-50%, -50%);
+  width: 130rpx;
+  height: 130rpx;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 130rpx;
+}
+scroll-view{
+  margin: 30rpx 0;
+}
+.list{
+  display: flex;
+  align-items: center;
+}
+.list image{
+  width: 30%;
+  flex-shrink: 0;
+  margin: 10rpx 30rpx;
+  box-sizing: border-box;
+  border: 3px solid transparent;
+  border-radius: 10rpx;
+}
+.list image.active{
+  border: 3px solid yellowgreen;
+}
+
+
+.item{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 30rpx 0;
+}
+.item image{
+  width: 300rpx;
+}
+.info{
+  flex: 1;
+  height: 160rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}

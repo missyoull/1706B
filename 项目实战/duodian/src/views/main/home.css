@@ -1,0 +1,24 @@
+.wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.wrap li{
+    width: 33%;
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    border-bottom: 1px solid #eee;
+    border-right: 1px solid #eee;
+    justify-content: space-between;
+}
+.wrap li img{
+    width: 100%;
+}
+.wrap li div{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

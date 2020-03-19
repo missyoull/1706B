@@ -1,0 +1,44 @@
+
+
+<view class="container">
+  <view>
+    <view class="banner">
+      <image src="{{bannerList[current]}}"/>
+      <text>{{current}}</text>
+    </view>
+    <scroll-view scroll-x="true">
+      <view class="list">
+        <block wx:for="{{bannerList}}" wx:key="{{index}}">
+            <image src="{{item}}" mode="widthFix" bindtap="click" data-id="{{index}}" class="{{current==index?'active':''}}"/>
+          </block>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view>
+    <text>选择商品</text>
+    <block wx:for="{{goodsList}}" wx:key="{{item.id}}">
+      <view class="item">
+        <image src="{{bannerList[current]}}" mode="widthFix"/>
+        <view class="info">
+          <text>{{item.title}}</text>
+          <text>${{item.price}}</text>  
+        </view>
+        
+        <icon wx:if="{{item.num <1}}" type="success" bindtap="add" data-id="{{item.id}}"/>
+        <view wx:else>
+          <icon type="cancel" bindtap="sub" data-id="{{item.id}}"/>
+          <text>{{item.num}}</text>
+          <icon type="success" bindtap="add" data-id="{{item.id}}"/>
+        </view>
+      </view>
+    </block>  
+  </view>
+
+  <view>
+    <text>总数:{{totalNum}}</text>
+    <text>总价:{{totalPrice}}</text>
+  </view>
+  
+  <button type="default"  bindtap="goRuler">条款</button>
+</view>
