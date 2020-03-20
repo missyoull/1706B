@@ -20,6 +20,7 @@ import axios from 'axios';
 import {mapState, mapActions} from 'vuex';
 
 export default {
+    name: 'Type',
     data(){
         return {
             page: 1,
@@ -51,6 +52,7 @@ export default {
         }
     },
     mounted(){
+        console.log('this...', this);
         this.type = this.$route.params['type'];
          this.getData({type:this.type, page:this.page});
 
