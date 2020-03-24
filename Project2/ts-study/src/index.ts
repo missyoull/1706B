@@ -78,4 +78,14 @@ console.log('s...', s);
 
 var x: Array<number|string|boolean|null> = [];
 
-var 
+var y: number | string;
+y = 100;
+y = 'hello world';
+
+type Chenmanjie = number | Array<number> | never [] | AjaxType;
+
+interface PropTypes {
+    list: [],
+    numChange: Function
+}
+type Zongzhiliang = AjaxType & PropTypes;
