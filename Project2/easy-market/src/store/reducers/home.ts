@@ -1,20 +1,16 @@
+import {ActionType} from '../../utils/interface'
 const initVal = {
-
+    banner: []
 }
 
-function homeReudcer(state, action){
+function homeReudcer(state: any, action: ActionType){
     switch (action.type) {
-        case '':
-            
-            break;
+        case 'GET_BANNER':
+            return {...state, ...action.payload}
     
         default:
             return state;
     }
 }
 
-export default (state=initVal, action)=>{
-    return {
-        home: homeReudcer(state, action)
-    }
-}
+export default (state=initVal, action:ActionType)=>homeReudcer(state, action)
