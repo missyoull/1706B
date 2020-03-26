@@ -3,7 +3,7 @@ const initVal = {
     banner: []
 }
 
-function homeReudcer(state: any, action: ActionType){
+function homeReducer(state: any, action: ActionType){
     switch (action.type) {
         case 'GET_BANNER':
             return {...state, ...action.payload}
@@ -13,4 +13,4 @@ function homeReudcer(state: any, action: ActionType){
     }
 }
 
-export default (state=initVal, action:ActionType)=>homeReudcer(state, action)
+export default (state=initVal, action:ActionType)=>homeReducer(state, action)
