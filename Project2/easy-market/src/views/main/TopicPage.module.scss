@@ -1,0 +1,53 @@
+.topic {
+    padding-bottom: 47px;
+}
+
+.topicitem:nth-child(1) {
+    margin-top: 0;
+}
+
+.topicitem {
+    margin-top: .2rem;
+    background: #fff;
+    display: block;
+
+    img {
+        width: 100%;
+    }
+
+    .topicItemTitle {
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding: .2rem .1rem .1rem;
+        font-size: .3rem;
+        line-height: .4rem;
+        // height: .7rem;
+        color: #000;
+    }
+
+    .topicItemSubtitle {
+        padding: .1rem .2rem;
+        font-size: .26rem;
+        color: grey;
+        // height: .4rem;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .topicItemPrice {
+        padding: .1rem .1rem .2rem;
+        font-size: .28rem;
+        text-align: center;
+        color: red;
+        line-height: .4rem;
+        height: .7rem;
+    }
+
+    p {
+        margin: 0;
+    }
+}
