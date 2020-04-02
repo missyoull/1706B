@@ -21,6 +21,12 @@ let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps<{id
         props.getTopicDetail(id);
     }, []);
 
+    useEffect(()=>{
+        if (props.detail.title){
+            document.title = props.detail.title;
+        }
+    }, [props.detail])
+
     return <>
         <div className={styles.wrap} dangerouslySetInnerHTML={{__html: props.detail.content}}></div>
     </>;
