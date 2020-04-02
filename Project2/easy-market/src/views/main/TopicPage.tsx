@@ -80,11 +80,12 @@
 // export default connect(mapStateToProps, mapDispatchToProps)(TopicPage)
 
 
-import React, {useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import {connect} from 'react-redux'
 import {topicAction} from '../../store/actions/topic'
 import {RouteComponentProps} from 'react-router-dom'
 import styles from './TopicPage.module.scss'
+import {throttle, debounce} from '../../utils/index'
 
 
 interface ItemType{
@@ -105,31 +106,47 @@ interface DisptachType{
 
 let TopicPage: React.FC<DisptachType & StateType & RouteComponentProps> = (props)=>{
     console.log('props...', props);
+    // 设置数据
+    let [page, setPage] = useState<number>(0);
+
     useEffect(()=>{
-        props.getTopicList();        
+        props.getTopicList();      
     }, []);
 
     let goDetail = (e:React.MouseEvent<HTMLLIElement>)=>{
         let id = e.currentTarget.dataset.id;
-        props.history.push('/topicDetail?id='+id);
+        props.history.push(`/topicDetail/${id}`);
     }
     
     useEffect(()=>{
+        // 请求锁
+        let flag = false;
         // 第一种方式,监听window的滚动
-        window.addEventListener('scroll', e=>{
-            let scrollY = (e.currentTarget as Window).scrollY;
-            console.log('e...', scrollY);
-            if (document.documentElement.getBoundingClientRect().height - (window.innerHeight + scrollY) < 20){
-                console.log('滚动到底部了');
-                // 做后续操作
-                // 事件的防抖和节流
-                // 请求锁
+        let scrollHandle = (e: Event)=>{
+            if (flag){
+                return;
             }
-        })
-    }, []);
+            let scrollY = (e.currentTarget as Window).scrollY;
+            if (document.documentElement.getBoundingClientRect().height - (window.innerHeight + scrollY) < 20){
+                // 判断是否已经到底，没有更多数据了
+                if (props.list.length <= (page+1)*10){
+                    return;
+                }
+                flag = true;
+                setPage(page=>page+1);
+                flag = false;
+            }
+        }
+        // 防抖和节流
+        let wrapHandle = throttle(scrollHandle);
+        window.addEventListener('scroll', wrapHandle);
+        return ()=>{
+            window.removeEventListener('scroll', wrapHandle);
+        }
+    }, [props.list]);
 
     return <>{
-        props.list.map((item)=>{
+        props.list.slice(0, (page+1)*10).map((item)=>{
             return <li key={item.id} onClick={goDetail} className={styles.topicitem} data-id={item.id}>
                 <img src={item.scene_pic_url}/>
                 <p className={styles.topicItemTitle}>{item.title}</p> 
