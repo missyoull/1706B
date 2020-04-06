@@ -2,7 +2,7 @@ import React,{useState} from 'react'
 import {Toast} from 'antd-mobile'
 import {mobileReg, passwordReg} from '../utils/regexp'
 import {connect} from 'react-redux'
-import {loginAction} from '../store/actions/login'
+import {loginAction} from '../store/actions/user'
 import {RouteComponentProps} from 'react-router'
 
 interface StateType{
@@ -54,7 +54,7 @@ let LoginPage: React.FC<StateType & DispatchType & RouteComponentProps> = props=
 
 const mapStateToProps = (state: any)=>{
     return {
-        isLogin: state.login.isLogin
+        isLogin: state.user.isLogin
     }
 }
 

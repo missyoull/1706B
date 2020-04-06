@@ -1,4 +1,4 @@
 export * from './home'
-export * from './login'
+export * from './user'
 export * from './topic'
 export * from './type'
