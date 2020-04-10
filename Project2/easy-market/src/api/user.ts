@@ -20,5 +20,5 @@ export let updateAvatar = (avatar:string)=>{
 
 // 上传用户头像
 export let uploadAvatar = (form: FormData)=>{
-    return axios.post('http://123.206.55.50:11000/upload', form)
+    return axios.post('//service.jasonandjay.com/upload', form)
 }

@@ -19,6 +19,8 @@ let reducers = combineReducers({
     type
 })
 
-let store = createStore(reducers, applyMiddleware(ReduxThunk, ReduxLogger))
+
+
+let store = createStore(reducers, applyMiddleware(ReduxThunk))
 
 export default store;

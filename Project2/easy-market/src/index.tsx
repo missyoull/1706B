@@ -10,10 +10,17 @@ import store from './store'
 import {Provider} from 'react-redux'
 
 // 引入antd-mobile
-import 'antd-mobile/dist/antd-mobile.css';
+// import 'antd-mobile/dist/antd-mobile.css';
+
 
 ReactDOM.render(<Provider store={store}>
     <HashRouter>
-        <RouterView routes={config.routes}/>
+        <React.Suspense fallback={<div>Loading...</div>}>
+            <RouterView routes={config.routes}/>
+        </React.Suspense>
     </HashRouter>
 </Provider>, document.getElementById('root'));
+
+
+// 重载console
+console.log = function(){};

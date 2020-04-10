@@ -3,13 +3,14 @@ import { Toast } from 'antd-mobile';
 import {getToken} from './index'
 
 const axios = Axios.create({
-    baseURL: 'http://easymarket.jasonandjay.com/',
+    // baseURL: /jasonandjay\.com/.test(window.location.host)?'//easymarket.jasonandjay.com/':'127.0.0.1:8888',
+    baseURL: process.env.NODE_ENV === 'production'?'//easymarket.jasonandjay.com/':'//easymarket.jasonandjay.com/',
     timeout: 5000
 });
 
 axios.interceptors.request.use(function (config) {
     // Do something before request is sent
-    if (getToken() && config.url !== 'http://123.206.55.50:11000/upload'){
+    if (getToken() && config.url !== '//service.jasonandjay.com/upload'){
       config.headers['x-nideshop-token'] = getToken();
     }
     return config;

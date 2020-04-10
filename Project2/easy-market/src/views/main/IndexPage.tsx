@@ -2,6 +2,8 @@ import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 import {bannerAction} from '../../store/actions/home'
 import {RouteComponentProps} from 'react-router'
+import LazyLoad from 'react-lazyload';
+
 
 interface StateType{
     banner: Array<{
@@ -39,7 +41,9 @@ let TopicDetailPage: React.FC<StateType & DispatchType & RouteComponentProps> = 
 
     return <>{
         props.banner.map(item=>{
-            return <img key={item.id} src={item.image_url} />
+            return <LazyLoad key={item.id}>
+                <img src={item.image_url.replace('http:', '')} />
+            </LazyLoad>
         })
     }</>;
 }

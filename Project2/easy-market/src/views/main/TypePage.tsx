@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import {RouteComponentProps} from 'react-router-dom'
 import { typeListAction, subTypeAction } from '../../store/actions/type'
 import { CategoryItem, SubCategoryItem } from '../../utils/interface';
+// 引入lazyload
+import LazyLoad from 'react-lazyload';
 
 interface StateType {
     categoryList: CategoryItem[],
@@ -55,7 +57,9 @@ let TypePage: React.FC<StateType & DispatchType & RouteComponentProps> = props =
             <ul>{
                 props.subCategoryList.map(item => {
                     return <li key={item.id} onClick={()=>goTypeDetail(item.id)}>
-                        <img src={item.wap_banner_url} alt="" />
+                        <LazyLoad>
+                            <img src={item.wap_banner_url} alt="" />
+                        </LazyLoad>
                         <span>{item.name}</span>
                     </li>
                 })}
