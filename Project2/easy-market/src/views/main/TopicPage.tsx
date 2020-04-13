@@ -20,10 +20,11 @@
 //     getTopicList: ()=>void
 // }
 
-// class TopicPage extends React.Component<StateType & DisptachType & RouteComponentProps>{
+// class TopicPage extends React.PureComponent<StateType & DisptachType & RouteComponentProps>{
 //     componentDidMount(){
 //         this.props.getTopicList();
 //     }
+
 
 //     goDetail = (e:React.MouseEvent<HTMLLIElement>)=>{
 //         let id = e.currentTarget.dataset.id;

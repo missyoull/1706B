@@ -23,4 +23,4 @@ ReactDOM.render(<Provider store={store}>
 
 
 // 重载console
-console.log = function(){};
+// console.log = function(){};

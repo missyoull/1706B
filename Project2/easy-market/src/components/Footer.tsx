@@ -1,19 +1,21 @@
-import React from 'react';
+import React from 'react'
+import {NavLink} from 'react-router-dom'
 
-interface PropsType{
-  totalPrice: number,
-  totalNum: number
+
+interface PropType{
+  footers: never [],
+  cb: ()=>void
 }
+let Footer:React.FC<PropType> = ()=>{
 
-class Footer extends React.Component<PropsType>{
-
-  render(){
-    return <>
-      <span>{`总数:${this.props.totalNum}`}</span>
-      <span>{`总价:${this.props.totalPrice}`}</span>
-      <button>立即支付</button>
-    </>;
-  }
+  console.log('footer...');
+  return  <footer>
+      <NavLink to="/main/index">首页</NavLink>
+      <NavLink to="/main/topic">专题</NavLink>
+      <NavLink to="/main/type">分类</NavLink>
+      <NavLink to="/main/cart">购物车</NavLink>
+      <NavLink to="/main/my">我的</NavLink>
+  </footer>
 }
 
 export default Footer;

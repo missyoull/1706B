@@ -1,20 +1,37 @@
-import React from 'react'
+import React, {useState, useEffect, memo, useMemo, useCallback} from 'react'
 import RouterView from '../router/RouterView'
 import { PropType, RouterItemType } from '../utils/interface'
-import {NavLink} from 'react-router-dom'
+import Footer from '../components/Footer'
 
+// memo包裹组件
+let WrapFooter = memo(Footer);
 let MainPage: React.FC<PropType> = props=>{
+
+    let [count, setCount] = useState<number>(100);
+    let [flag, setFlag] = useState<boolean>(false);
+
+    let [arr, setArr] = useState<Array<never>>([]);
+
+    // useEffect(()=>{
+    //     setInterval(()=>{
+    //         setCount(count=>count+1)
+    //     }, 1000);
+    // }, []);
+
+    console.log('count...', count);
+
+    let changeFooter = ()=>{
+
+    }
+
     return <>
         <div>
             <RouterView routes={props.routes}/>
         </div>
-        <footer>
-            <NavLink to="/main/index">首页</NavLink>
-            <NavLink to="/main/topic">专题</NavLink>
-            <NavLink to="/main/type">分类</NavLink>
-            <NavLink to="/main/cart">购物车</NavLink>
-            <NavLink to="/main/my">我的</NavLink>
-        </footer>
+
+        {/* <WrapFooter footers={useMemo(()=>arr, [arr])}/> */}
+        
+        <WrapFooter footers={arr} cb={useCallback(()=>changeFooter(), [])}/>
     </>
 }
 
