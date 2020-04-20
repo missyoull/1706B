@@ -3,7 +3,13 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "小程序首页"
+			}
+		},
+		{
+			"path": "pages/covid/index",
+			"style": {
+				"navigationBarTitleText": "实施更新肺炎疫情"
 			}
 		}
 	],

@@ -1,4 +1,4 @@
-# my-project
+# covid-19
 
 ## Project setup
 ```
