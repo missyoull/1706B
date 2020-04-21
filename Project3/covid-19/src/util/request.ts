@@ -3,7 +3,7 @@ var fly = new Fly
 
 // 全局配置
 fly.config = {
-    baseURL: 'https://sign.jasonandjay.com/',
+    // baseURL: 'https://sign.jasonandjay.com/',
     timeout: 3000,
 }
 

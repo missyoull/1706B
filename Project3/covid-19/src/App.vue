@@ -1,6 +1,6 @@
 <script lang="ts">
 import Vue from "vue";
-import {login} from './api'
+import {login, getTrace, getDisease, getLastNews, getGlobalRank, getGlobalDisease, getHospitalProvince} from './api'
 export default Vue.extend({
   mpType: "app",
   onLaunch() {
@@ -25,7 +25,12 @@ export default Vue.extend({
     });
     console.log("App Launch");
   },
-  onShow() {
+  async onShow() {
+    // let result = await getTrace();
+    // console.log('result...', JSON.parse(result as string));
+
+    let result = await getLastNews()
+    console.log('result...', result);
     console.log("App Show");
   },
   onHide() {
